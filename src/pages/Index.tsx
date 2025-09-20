@@ -41,7 +41,7 @@ const Index = () => {
         <div className="max-w-4xl relative z-10">
           <h1 className="text-5xl md:text-7xl font-normal mb-4 tracking-tight text-left">
             <span className="text-gray-200">
-              <TextGenerateEffect words="🚨 Enquanto você demora para responder," />
+              <TextGenerateEffect words="Enquanto você demora para responder," />
             </span>
             <br />
             <span className="text-white font-medium">
@@ -72,21 +72,6 @@ const Index = () => {
             </Button>
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="relative mx-auto max-w-5xl mt-20"
-        >
-          <div className="glass rounded-xl overflow-hidden">
-            <img
-              src="/lovable-uploads/c32c6788-5e4a-4fee-afee-604b03113c7f.png"
-              alt="CryptoTrade Dashboard"
-              className="w-full h-auto"
-            />
-          </div>
-        </motion.div>
       </motion.section>
 
       {/* Logo Carousel */}

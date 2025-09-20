@@ -49,7 +49,6 @@ export const FeaturesSection = () => {
                 className="mt-0 h-full"
               >
                 <FeatureContent
-                  image={feature.image}
                   title={feature.title}
                 />
               </TabsContent>
