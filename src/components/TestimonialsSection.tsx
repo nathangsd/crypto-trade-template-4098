@@ -6,40 +6,40 @@ import { Card } from "./ui/card";
 
 const testimonials = [
   {
-    name: "Michael Chen",
-    role: "Professional Trader",
+    name: "Carlos Silva",
+    role: "Dono da ProvedorNet",
     image: "https://avatars.githubusercontent.com/u/1234567?v=4",
-    content: "The real-time market data and advanced trading features have significantly improved my trading performance. The platform's security measures give me peace of mind."
+    content: "Antes da IA, perdíamos muitos contatos à noite. Agora os clientes recebem resposta imediata, e quando chego no dia seguinte já tenho leads prontos para fechar."
   },
   {
-    name: "Sarah Johnson",
-    role: "Crypto Fund Manager",
+    name: "Fernanda Costa",
+    role: "Gestora de vendas ConectaMais",
     image: "https://avatars.githubusercontent.com/u/2345678?v=4",
-    content: "CryptoTrade's institutional-grade tools have transformed our trading strategy. The API integration and automated features have saved us countless hours."
+    content: "Minha equipe ficou mais leve. A IA resolve 70% das dúvidas iniciais e a gente só entra quando o cliente já está quase fechado."
   },
   {
-    name: "David Wilson",
-    role: "Early Crypto Investor",
+    name: "Roberto Mendes",
+    role: "Diretor comercial FiberMax",
     image: "https://avatars.githubusercontent.com/u/3456789?v=4",
-    content: "The customer support is exceptional, and the platform's intuitive design made getting started with crypto trading seamless. A game-changer for both beginners and pros."
+    content: "O atendimento 24h foi um divisor de águas. Nossos concorrentes perdem leads de madrugada, enquanto a nossa IA está sempre respondendo."
   },
   {
-    name: "Emily Zhang",
-    role: "DeFi Developer",
+    name: "Ana Paula",
+    role: "Proprietária NetSpeed",
     image: "https://avatars.githubusercontent.com/u/4567890?v=4",
-    content: "We've seen remarkable improvements in our trading efficiency since switching to CryptoTrade. The smart order routing and liquidity aggregation are particularly impressive."
+    content: "Em 3 meses usando a IA, aumentamos nossa conversão em 40%. O cliente já chega qualificado para o vendedor humano."
   },
   {
-    name: "James Rodriguez",
-    role: "Crypto Security Expert",
+    name: "Marcus Oliveira",
+    role: "Gerente de atendimento TurboNet",
     image: "https://avatars.githubusercontent.com/u/5678901?v=4",
-    content: "The security features are robust and the regular updates keep us ahead of emerging threats. It's exactly what the crypto industry needed."
+    content: "Antes gastávamos muito com atendentes extras. Agora a IA faz o trabalho inicial e nossa equipe foca apenas nos fechamentos."
   },
   {
-    name: "Lisa Thompson",
-    role: "Portfolio Manager",
+    name: "Juliana Santos",
+    role: "Sócia da ConexãoRápida",
     image: "https://avatars.githubusercontent.com/u/6789012?v=4",
-    content: "The platform's ability to handle complex trading strategies while maintaining simplicity in its interface is remarkable. It's been invaluable for our portfolio management."
+    content: "A resposta automática no WhatsApp mudou tudo. Os clientes se sentem bem atendidos mesmo fora do horário comercial."
   }
 ];
 
@@ -54,9 +54,9 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl font-normal mb-4">Trusted by Traders</h2>
+          <h2 className="text-5xl font-normal mb-4">Confiado por Provedores</h2>
           <p className="text-muted-foreground text-lg">
-            Join thousands of satisfied traders on CryptoTrade
+            Junte-se a centenas de provedores satisfeitos com nossa IA
           </p>
         </motion.div>
 
