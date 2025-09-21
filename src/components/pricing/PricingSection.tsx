@@ -14,7 +14,7 @@ const PricingTier = ({
 }: {
   name: string;
   price: string;
-  description: string;
+  description: string | React.ReactNode;
   features: string[];
   isPopular?: boolean;
   onButtonClick?: () => void;
@@ -31,7 +31,7 @@ const PricingTier = ({
         <span className="text-4xl font-bold">{price}</span>
         {price !== "Custom" && price !== "Gratuito" && <span className="text-gray-400">/month</span>}
       </div>
-      <p className="text-gray-400 mb-6">{description}</p>
+      <div className="text-gray-400 mb-6">{description}</div>
       <ul className="space-y-3 mb-8 flex-grow">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center gap-2">
@@ -78,7 +78,11 @@ export const PricingSection = () => {
         <PricingTier
           name="Plano Gratuito"
           price="Gratuito"
-          description="Estamos abrindo apenas 20 vagas para os primeiros Membros Fundadores da Flly IA, que terão acesso exclusivo e vitalício a benefícios especiais:"
+          description={
+            <>
+              Estamos abrindo <span className="bg-primary/20 text-primary px-2 py-1 rounded font-bold">apenas 20 vagas</span> para os primeiros <strong>Membros Fundadores da Flly IA</strong>, que terão acesso exclusivo e vitalício a benefícios especiais:
+            </>
+          }
           features={[
             "📅 R$ 500 em créditos gratuitos para utilizar na criação de agentes SDR com IA",
             "📅 Assinatura vitalícia gratuita – nunca pagarão mensalidade",
@@ -88,7 +92,25 @@ export const PricingSection = () => {
             "📅 Reconhecimento como fundador (badge/perfil dentro da plataforma + citação em materiais)"
           ]}
           isPopular={true}
-          onButtonClick={openTallyPopup}
+          onButtonClick={() => {
+            // Load Tally script if not already loaded
+            if (!document.querySelector('script[src="https://tally.so/widgets/embed.js"]')) {
+              const script = document.createElement('script');
+              script.src = 'https://tally.so/widgets/embed.js';
+              script.async = true;
+              document.head.appendChild(script);
+            }
+            
+            // Create and trigger the button with Tally attributes
+            const tallyButton = document.createElement('button');
+            tallyButton.setAttribute('data-tally-open', '3jKzax');
+            tallyButton.setAttribute('data-tally-emoji-text', '👋');
+            tallyButton.setAttribute('data-tally-emoji-animation', 'wave');
+            tallyButton.style.display = 'none';
+            document.body.appendChild(tallyButton);
+            tallyButton.click();
+            document.body.removeChild(tallyButton);
+          }}
         />
       </div>
     </section>

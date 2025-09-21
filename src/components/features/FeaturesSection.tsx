@@ -4,6 +4,9 @@ import { FeatureContent } from "./FeatureContent";
 import { features } from "@/config/features";
 
 export const FeaturesSection = () => {
+  const problemFeatures = features.slice(0, 3); // Red icons (problems)
+  const solutionFeatures = features.slice(3, 6); // Green icons (solutions)
+
   return (
     <section className="container px-4 py-16">
       {/* Header Section */}
@@ -18,44 +21,39 @@ export const FeaturesSection = () => {
         </p>
       </div>
 
-      <Tabs defaultValue={features[0].title} className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-          {/* Left side - Tab triggers */}
-          <div className="md:col-span-5 space-y-3">
-            <TabsList className="flex flex-col w-full bg-transparent h-auto p-0 space-y-3">
-              {features.map((feature) => (
-                <TabsTrigger
-                  key={feature.title}
-                  value={feature.title}
-                  className="w-full data-[state=active]:shadow-none data-[state=active]:bg-transparent"
-                >
-                  <FeatureTab
-                    title={feature.title}
-                    description={feature.description}
-                    icon={feature.icon}
-                    isActive={false}
-                  />
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </div>
-
-          {/* Right side - Tab content with images */}
-          <div className="md:col-span-7">
-            {features.map((feature) => (
-              <TabsContent
-                key={feature.title}
-                value={feature.title}
-                className="mt-0 h-full"
-              >
-                <FeatureContent
-                  title={feature.title}
-                />
-              </TabsContent>
+      <div className="max-w-4xl mx-auto">
+        {/* Problems Section */}
+        <div className="mb-12">
+          <h3 className="text-2xl font-semibold mb-8 text-center text-red-400">❌ Problemas Atuais</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {problemFeatures.map((feature) => (
+              <div key={feature.title} className="glass rounded-xl p-6 border border-red-400/20">
+                <div className="flex items-center gap-3 mb-4">
+                  {feature.icon}
+                </div>
+                <h4 className="font-semibold mb-3 text-base leading-tight">{feature.title}</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">{feature.description}</p>
+              </div>
             ))}
           </div>
         </div>
-      </Tabs>
+
+        {/* Solutions Section */}
+        <div>
+          <h3 className="text-2xl font-semibold mb-8 text-center text-green-400">✅ Nossas Soluções</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {solutionFeatures.map((feature) => (
+              <div key={feature.title} className="glass rounded-xl p-6 border border-green-400/20">
+                <div className="flex items-center gap-3 mb-4">
+                  {feature.icon}
+                </div>
+                <h4 className="font-semibold mb-3 text-base leading-tight">{feature.title}</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

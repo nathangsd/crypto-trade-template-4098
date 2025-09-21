@@ -78,7 +78,7 @@ const Navigation = () => {
               </a>
             ))}
             <Button 
-              onClick={() => scrollToSection('cta')}
+              onClick={() => scrollToSection('pricing')}
               size="sm"
               className="button-gradient"
             >
@@ -115,7 +115,7 @@ const Navigation = () => {
                   <Button 
                     onClick={() => {
                       setIsMobileMenuOpen(false);
-                      scrollToSection('cta');
+                      scrollToSection('pricing');
                     }}
                     className="button-gradient mt-4"
                   >

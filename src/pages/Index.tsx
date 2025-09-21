@@ -41,8 +41,8 @@ const Index = () => {
           </motion.div>
         </div>
         
-        <div className="max-w-5xl relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-normal mb-4 tracking-tight">
+        <div className="max-w-5xl mx-auto text-center">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-normal mb-4 tracking-tight leading-tight">
             <span className="text-gray-200">
               <TextGenerateEffect words="Enquanto você demora para responder," />
             </span>
@@ -70,7 +70,12 @@ const Index = () => {
             <Button 
               size="lg" 
               className="button-gradient"
-              onClick={openTallyPopup}
+              onClick={() => {
+                const pricingSection = document.getElementById('pricing');
+                if (pricingSection) {
+                  pricingSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               Quero testar grátis por 3 meses
             </Button>
@@ -104,9 +109,9 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="glass rounded-2xl p-8 md:p-12 text-left"
+            className="glass rounded-2xl p-8 md:p-12 text-center"
           >
-            <h3 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+            <h3 className="text-2xl font-semibold mb-6 flex items-center justify-center gap-3">
               <span className="text-red-400">⚡</span>
               O consumidor de internet é imediatista:
             </h3>
@@ -116,7 +121,7 @@ const Index = () => {
               <p>• O tempo médio para fechar depende diretamente da <strong className="text-white">velocidade de resposta</strong>.</p>
             </div>
 
-            <h3 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+            <h3 className="text-2xl font-semibold mb-6 flex items-center justify-center gap-3">
               <span className="text-green-400">🤖</span>
               Nossa IA garante:
             </h3>
@@ -196,7 +201,12 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="button-gradient"
-                onClick={openTallyPopup}
+                onClick={() => {
+                  const pricingSection = document.getElementById('pricing');
+                  if (pricingSection) {
+                    pricingSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Quero testar grátis por 3 meses
               </Button>
@@ -240,7 +250,12 @@ const Index = () => {
           <Button 
             size="lg" 
             className="button-gradient"
-            onClick={openTallyPopup}
+            onClick={() => {
+              const pricingSection = document.getElementById('pricing');
+              if (pricingSection) {
+                pricingSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
           >
             Quero começar agora
             <ArrowRight className="ml-2 w-4 h-4" />
