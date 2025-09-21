@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import { FeaturesSection } from "@/components/features/FeaturesSection";
 import { PricingSection } from "@/components/pricing/PricingSection";
-import LogoCarousel from "@/components/LogoCarousel";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { useTallyPopup } from "@/components/TallyPopup";
 
 const Index = () => {
+  const { openTallyPopup } = useTallyPopup();
   return (
     <div className="min-h-screen bg-black text-foreground">
       <Navigation />
@@ -26,20 +27,22 @@ const Index = () => {
           className="absolute inset-0 -z-10 bg-[#0A0A0A]"
         />
         
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="inline-block mb-4 px-4 py-1.5 rounded-full glass"
-        >
-          <span className="text-sm font-medium">
-            <Command className="w-4 h-4 inline-block mr-2" />
-            IA para provedores de internet
-          </span>
-        </motion.div>
+        <div className="flex justify-center mb-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-block px-4 py-1.5 rounded-full glass"
+          >
+            <span className="text-sm font-medium">
+              <Command className="w-4 h-4 inline-block mr-2" />
+              IA para provedores de internet
+            </span>
+          </motion.div>
+        </div>
         
-        <div className="max-w-4xl relative z-10">
-          <h1 className="text-5xl md:text-7xl font-normal mb-4 tracking-tight text-left">
+        <div className="max-w-5xl relative z-10 text-center">
+          <h1 className="text-4xl md:text-6xl font-normal mb-4 tracking-tight">
             <span className="text-gray-200">
               <TextGenerateEffect words="Enquanto você demora para responder," />
             </span>
@@ -53,7 +56,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl text-left"
+            className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto text-center"
           >
             Com nossa IA, seus leads são atendidos no WhatsApp em segundos — 24h por dia, 7 dias por semana — sem precisar contratar mais atendentes.
           </motion.p>
@@ -62,9 +65,13 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 items-start"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button size="lg" className="button-gradient">
+            <Button 
+              size="lg" 
+              className="button-gradient"
+              onClick={openTallyPopup}
+            >
               Quero testar grátis por 3 meses
             </Button>
             <Button size="lg" variant="link" className="text-white">
@@ -74,16 +81,14 @@ const Index = () => {
         </div>
       </motion.section>
 
-      {/* Logo Carousel */}
-      <LogoCarousel />
 
       {/* Features Section */}
-      <div id="features" className="bg-black">
+      <div id="features" className="bg-black pt-12">
         <FeaturesSection />
       </div>
 
       {/* Por que uma IA é indispensável */}
-      <section className="container px-4 py-24 bg-black">
+      <section className="container px-4 py-16 bg-black">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -144,7 +149,7 @@ const Index = () => {
       </section>
 
       {/* Impacto no faturamento */}
-      <section className="container px-4 py-24 bg-black">
+      <section className="container px-4 py-16 bg-black">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -188,7 +193,11 @@ const Index = () => {
               <p className="text-lg mb-6">
                 E o melhor: você pode <strong className="text-primary">testar grátis por 3 meses</strong>, sem risco.
               </p>
-              <Button size="lg" className="button-gradient">
+              <Button 
+                size="lg" 
+                className="button-gradient"
+                onClick={openTallyPopup}
+              >
                 Quero testar grátis por 3 meses
               </Button>
             </div>
@@ -197,17 +206,17 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      <div id="pricing" className="bg-black">
+      <div id="pricing" className="bg-black pt-8">
         <PricingSection />
       </div>
 
       {/* Testimonials Section */}
-      <div className="bg-black">
+      <div className="bg-black pt-8">
         <TestimonialsSection />
       </div>
 
       {/* CTA Section */}
-      <section className="container px-4 py-20 relative bg-black">
+      <section className="container px-4 py-16 relative bg-black">
         <div 
           className="absolute inset-0 opacity-40"
           style={{
@@ -228,7 +237,11 @@ const Index = () => {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Junte-se a centenas de provedores que já descobriram o poder da IA no atendimento.
           </p>
-          <Button size="lg" className="button-gradient">
+          <Button 
+            size="lg" 
+            className="button-gradient"
+            onClick={openTallyPopup}
+          >
             Quero começar agora
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>

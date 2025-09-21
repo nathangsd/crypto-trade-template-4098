@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CardSpotlight } from "./CardSpotlight";
+import { useTallyPopup } from "../TallyPopup";
 
 const PricingTier = ({
   name,
@@ -9,12 +10,14 @@ const PricingTier = ({
   description,
   features,
   isPopular,
+  onButtonClick,
 }: {
   name: string;
   price: string;
   description: string;
   features: string[];
   isPopular?: boolean;
+  onButtonClick?: () => void;
 }) => (
   <CardSpotlight className={`h-full ${isPopular ? "border-primary" : "border-white/10"} border-2`}>
     <div className="relative h-full p-6 flex flex-col">
@@ -37,7 +40,10 @@ const PricingTier = ({
           </li>
         ))}
       </ul>
-      <Button className="button-gradient w-full">
+      <Button 
+        className="button-gradient w-full"
+        onClick={onButtonClick}
+      >
         Quero começar agora
       </Button>
     </div>
@@ -45,8 +51,9 @@ const PricingTier = ({
 );
 
 export const PricingSection = () => {
+  const { openTallyPopup } = useTallyPopup();
   return (
-    <section className="container px-4 py-24">
+    <section className="container px-4 py-16">
       <div className="max-w-2xl mx-auto text-center mb-12">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -71,16 +78,17 @@ export const PricingSection = () => {
         <PricingTier
           name="Plano Gratuito"
           price="Gratuito"
-          description="Acesse a plataforma e tenha 3 meses grátis para testar sem compromisso"
+          description="Estamos abrindo apenas 20 vagas para os primeiros Membros Fundadores da Flly IA, que terão acesso exclusivo e vitalício a benefícios especiais:"
           features={[
-            "Atendimento automático no WhatsApp",
-            "Respostas às dúvidas mais comuns",
-            "Qualificação básica de leads",
-            "Relatórios semanais",
-            "Suporte por email",
-            "Configuração incluída"
+            "📅 R$ 500 em créditos gratuitos para utilizar na criação de agentes SDR com IA",
+            "📅 Assinatura vitalícia gratuita – nunca pagarão mensalidade",
+            "📅 Acesso antecipado a funcionalidades novas antes de todos",
+            "📅 Canal direto com os fundadores da Flly para sugestões, dúvidas e suporte técnico",
+            "📅 Sessões semanais de feedback ao vivo com o time da Flly",
+            "📅 Reconhecimento como fundador (badge/perfil dentro da plataforma + citação em materiais)"
           ]}
-          isPopular
+          isPopular={true}
+          onButtonClick={openTallyPopup}
         />
       </div>
     </section>

@@ -5,15 +5,15 @@ import { features } from "@/config/features";
 
 export const FeaturesSection = () => {
   return (
-    <section className="container px-4 py-24">
+    <section className="container px-4 py-16">
       {/* Header Section */}
-      <div className="max-w-2xl mb-20">
-        <h2 className="text-5xl md:text-6xl font-normal mb-6 tracking-tight text-left">
+      <div className="max-w-2xl mb-16 text-center mx-auto">
+        <h2 className="text-5xl md:text-6xl font-normal mb-6 tracking-tight">
           Problemas vs
           <br />
           <span className="text-gradient font-medium">Soluções</span>
         </h2>
-        <p className="text-lg md:text-xl text-gray-400 text-left">
+        <p className="text-lg md:text-xl text-gray-400">
           Descubra como nossa IA resolve os principais desafios do atendimento em provedores de internet.
         </p>
       </div>
