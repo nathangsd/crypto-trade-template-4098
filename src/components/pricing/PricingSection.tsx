@@ -93,6 +93,19 @@ export const PricingSection = () => {
           ]}
           isPopular={true}
           onButtonClick={() => {
+            // Track checkout click
+            if (typeof window !== 'undefined' && window.dataLayer) {
+              const variant = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('ab_headline_variant='))
+                ?.split('=')[1] || 'a';
+              
+              window.dataLayer.push({
+                'event': 'checkout_click',
+                'headline_variant': variant
+              });
+            }
+
             // Load Tally script if not already loaded
             if (!document.querySelector('script[src="https://tally.so/widgets/embed.js"]')) {
               const script = document.createElement('script');

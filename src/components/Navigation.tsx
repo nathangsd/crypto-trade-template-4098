@@ -17,6 +17,19 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    // Track checkout click for pricing buttons
+    if (sectionId === 'pricing' && typeof window !== 'undefined' && window.dataLayer) {
+      const variant = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('ab_headline_variant='))
+        ?.split('=')[1] || 'a';
+      
+      window.dataLayer.push({
+        'event': 'checkout_click',
+        'headline_variant': variant
+      });
+    }
+
     if (sectionId === 'testimonials') {
       const testimonialSection = document.querySelector('.animate-marquee');
       if (testimonialSection) {

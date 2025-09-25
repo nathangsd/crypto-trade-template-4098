@@ -8,9 +8,19 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { useTallyPopup } from "@/components/TallyPopup";
+import { useABTesting } from "@/hooks/useABTesting";
 
 const Index = () => {
   const { openTallyPopup } = useTallyPopup();
+  const { headlineContent, variant, isLoaded, trackCheckoutClick } = useABTesting();
+
+  const scrollToPricing = () => {
+    trackCheckoutClick();
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div className="min-h-screen bg-black text-foreground">
       <Navigation />
@@ -42,13 +52,13 @@ const Index = () => {
         </div>
         
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-normal mb-4 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-4 tracking-tight leading-tight">
             <span className="text-gray-200">
-              <TextGenerateEffect words="Enquanto você demora para responder," />
+              <TextGenerateEffect words={headlineContent.headline.split(',')[0] + ","} />
             </span>
             <br />
             <span className="text-white font-medium">
-              <TextGenerateEffect words="seu concorrente já instalou a internet." />
+              <TextGenerateEffect words={headlineContent.headline.split(',')[1]?.trim() || ""} />
             </span>
           </h1>
           
@@ -58,7 +68,7 @@ const Index = () => {
             transition={{ delay: 0.4 }}
             className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto text-center"
           >
-            Com nossa IA, seus leads são atendidos no WhatsApp em segundos — 24h por dia, 7 dias por semana — sem precisar contratar mais atendentes.
+            {headlineContent.subheadline}
           </motion.p>
           
           <motion.div
@@ -70,12 +80,8 @@ const Index = () => {
             <Button 
               size="lg" 
               className="button-gradient"
-              onClick={() => {
-                const pricingSection = document.getElementById('pricing');
-                if (pricingSection) {
-                  pricingSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+              onClick={scrollToPricing}
+              data-checkout-button
             >
               Quero testar grátis por 3 meses
             </Button>
@@ -201,12 +207,8 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="button-gradient"
-                onClick={() => {
-                  const pricingSection = document.getElementById('pricing');
-                  if (pricingSection) {
-                    pricingSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={scrollToPricing}
+                data-checkout-button
               >
                 Quero testar grátis por 3 meses
               </Button>
@@ -250,12 +252,8 @@ const Index = () => {
           <Button 
             size="lg" 
             className="button-gradient"
-            onClick={() => {
-              const pricingSection = document.getElementById('pricing');
-              if (pricingSection) {
-                pricingSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
+            onClick={scrollToPricing}
+            data-checkout-button
           >
             Quero começar agora
             <ArrowRight className="ml-2 w-4 h-4" />
