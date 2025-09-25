@@ -9,6 +9,11 @@ import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { useTallyPopup } from "@/components/TallyPopup";
 import { useABTesting } from "@/hooks/useABTesting";
+import { lazy, Suspense } from "react";
+
+// Lazy load non-critical components for better performance
+const LazyTestimonials = lazy(() => import("@/components/TestimonialsSection"));
+const LazyFooter = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   const { openTallyPopup } = useTallyPopup();
@@ -22,19 +27,19 @@ const Index = () => {
     }
   };
   return (
-    <div className="min-h-screen bg-black text-foreground">
+    <div className="min-h-screen bg-black text-foreground transform-gpu">
       <Navigation />
       
-      {/* Hero Section */}
+      {/* Hero Section - Critical above-the-fold content */}
       <motion.section 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="relative container px-4 pt-40 pb-20"
       >
-        {/* Background */}
+        {/* Background - Optimized */}
         <div 
-          className="absolute inset-0 -z-10 bg-[#0A0A0A]"
+          className="absolute inset-0 -z-10 bg-[#0A0A0A] will-change-transform"
         />
         
         <div className="flex justify-center mb-4">
@@ -42,7 +47,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-1.5 rounded-full glass"
+            className="inline-block px-4 py-1.5 rounded-full glass transform-gpu"
           >
             <span className="text-sm font-medium">
               <Command className="w-4 h-4 inline-block mr-2" />
@@ -52,7 +57,7 @@ const Index = () => {
         </div>
         
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-4 tracking-tight leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal mb-4 tracking-tight leading-tight will-change-opacity">
             <span className="text-gray-200">
               <TextGenerateEffect words={headlineContent.headline.split(',')[0] + ","} />
             </span>
@@ -79,7 +84,7 @@ const Index = () => {
           >
             <Button 
               size="lg" 
-              className="button-gradient"
+              className="button-gradient transform-gpu"
               onClick={scrollToPricing}
               data-checkout-button
             >
